@@ -1,4 +1,5 @@
-![Cover](./.github/cover.png)
+![image](https://github.com/Leomendferre/nlw-expert-notes/assets/54585188/3209f911-f5b0-4a43-b866-0bbf9bb85113)
+
 
 # NLW Expert (React)
 
