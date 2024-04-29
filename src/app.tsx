@@ -11,7 +11,6 @@ interface Note {
 
 export function App() {
   const [search, setSearch] = useState ('')
-
   const [notes, setNotes] = useState<Note[]>(() => {
     const notesOnStorage = localStorage.getItem('notes')
 
@@ -31,6 +30,16 @@ export function App() {
     }
 
     const notesArray = [newNote, ...notes]
+
+    setNotes(notesArray)
+
+    localStorage.setItem('notes', JSON.stringify(notesArray))
+  }
+
+  function onNoteDeleted(id: string) {
+    const notesArray = notes.filter(note => {
+      return note.id !== id
+    })
 
     setNotes(notesArray)
 
@@ -73,7 +82,7 @@ export function App() {
           }} /> Criar o componente quando ele se repete diversas vezes ou para deixar algo menor, mais facil de dar manutenção*/} 
 
         {filteredNotes.map (note =>{
-           return <NoteCard key={note.id} note= {note} />
+           return <NoteCard key={note.id} note= {note} onNoteDeleted={onNoteDeleted} />
         })}
       </div>
     </div>
